@@ -72,10 +72,10 @@ These logaritmic functions depend on the built-in JavaScript functions. For log2
 
 |Name|Arguments|Description|Example|
 |----|---------|-----------|-------|
-|ln|num|Returns the natural logarithm of num (logarithm with base e); error if no arguments|log(3) === 1.0986122886681098|
-|log|num[, base]|Returns the logaritm with the specified base (defaults to 10); error if no arguments|log(10, 3) === 2.095903274289385|
-|log2|num|Returns the binary logarithm of num (logarithm with base 2); error if no arguments|log2(64) === 6|
-|log10|num|Returns the common logarithm of num (logarithm with base 10); error if no arguments|log10(3e+100) === 100.47712125471966|
+|ln|num|Returns the natural logarithm of num (logarithm with base e); num ≥ 0; error if no arguments|log(3) === 1.0986122886681098|
+|log|num[, base]|Returns the logaritm with the specified base (defaults to 10); num ≥ 0 and base > 0; error if no arguments|log(10, 3) === 2.095903274289385|
+|log2|num|Returns the binary logarithm of num (logarithm with base 2); num ≥ 0; error if no arguments|log2(64) === 6|
+|log10|num|Returns the common logarithm of num (logarithm with base 10); num ≥ 0; error if no arguments|log10(3e+100) === 100.47712125471966|
 
 ##### Trigonometric
 Most of these trigonometric functions depend on the built-in JavaScript functions. For trigonometric functions using degrees, there might be a slight inaccuracy in the result. Use the round() function. For hyperbolic trigonometric functions, a polyfill is used if built-in functions are unavailable.
@@ -84,16 +84,16 @@ Most of these trigonometric functions depend on the built-in JavaScript function
 |----|---------|-----------|-------|
 |sin|num|Returns the sine of num (in radians); error if no arguments|sin(1) === 0.8414709848078965|
 |sind|num|Returns the sine of num (in degrees); error if no arguments|sind(45) === 0.7071067811865475|
-|asin|num|Returns the principal arcsine (in radians) of num; between -π/2 and π/2 (inclusive); error if no arguments|asin(0.5) === 0.5235987755982988|
-|asind|num|Returns the principal arcsine (in degrees) of num; between -90˚ and 90˚ (inclusive); error if no arguments|asind(0.5) === 29.999999999999996|
+|asin|num|Returns the principal arcsine (in radians) of num; between -π/2 and π/2 (inclusive); -1 ≤ num ≤ 1; error if no arguments|asin(0.5) === 0.5235987755982988|
+|asind|num|Returns the principal arcsine (in degrees) of num; between -90˚ and 90˚ (inclusive); -1 ≤ num ≤ 1; error if no arguments|asind(0.5) === 29.999999999999996|
 |sinh|num|Returns the hyperbolic sine of num; error if no arguments|sinh(1) === 1.1752011936438014|
 |asinh|num|Returns the area hyperbolic sine of num; error if no arguments|asinh(1) === 0.8813735870195429|
 |cos|num|Returns the cosine of num (in radians); error if no arguments|cos(1) === 0.5403023058681398|
 |cosd|num|Returns the cosine of num (in degrees); error if no arguments|cosd(45) === 0.7071067811865476|
-|acos|num|Returns the principal arccosine (in radians) of num; between 0 and π (inclusive); error if no arguments|acos(0.5) === 1.0471975511965976|
-|acosd|num|Returns the principal arccosine (in degrees) of num; between 0 and 90˚ (inclusive); error if no arguments|acosd(0.5) === 59.99999999999999|
+|acos|num|Returns the principal arccosine (in radians) of num; between 0 and π (inclusive); -1 ≤ num ≤ 1; error if no arguments|acos(0.5) === 1.0471975511965976|
+|acosd|num|Returns the principal arccosine (in degrees) of num; between 0 and 90˚ (inclusive); -1 ≤ num ≤ 1; error if no arguments|acosd(0.5) === 59.99999999999999|
 |cosh|num|Returns the hyperbolic cosine of num; error if no arguments|cosh(1) === 1.5430806348152437|
-|acosh|num|Returns the area hyperbolic cosine of num; error if no arguments|acosh(1) === 0|
+|acosh|num|Returns the area hyperbolic cosine of num; num ≤ 1; error if no arguments|acosh(1) === 0|
 |tan|num|Returns the tangent of num (in radians); error if no arguments|tan(1) === 1.5574077246549023|
 |tand|num|Returns the tangent of num (in degrees); error if no arguments|tand(45) === 0.9999999999999999|
 |atan|num|Returns the principal arctangent (in radians) of num; between -π/2 and π/2 (inclusive); error if no arguments|atan(0.5) === 0.46364760900080615|
@@ -101,7 +101,7 @@ Most of these trigonometric functions depend on the built-in JavaScript function
 |atand|num|Returns the principal arctangent (in degrees) of num; between -90˚ and 90˚ (inclusive); error if no arguments|atand(0.5) === 26.56505117707799|
 |atand2|num1[, num2]|Returns the principal arctangent (in degrees) of num1 / num2; between -180˚ and 180˚ (inclusive); error if no arguments|atand(3, -2) === 123.69006752597979|
 |tanh|num|Returns the hyperbolic tangent of num; error if no arguments|tanh(1) === 0.7615941559557649|
-|atanh|num|Returns the area hyperbolic tangent of num; error if no arguments|atanh(1) === Infinity|
+|atanh|num|Returns the area hyperbolic tangent of num; -1 ≤ num ≤ 1; error if no arguments|atanh(1) === Infinity|
 
 ##### Random
 These functions depend on the built-in JavaScript Math.random() function.
