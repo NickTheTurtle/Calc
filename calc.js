@@ -91,7 +91,10 @@ function calc(s, options) {
       //logarithmic functions
       ln: function(num) {
         if (num === undefined) {
-          throw new Error("Ln function requires at least one argument");
+          throw new Error("Ln function requires at the num argument");
+        }
+        if (num < 0) {
+          throw new Error("Ln function requires the num argument to be greater than or equal to 0");
         }
         return Math.log(num);
       },
@@ -99,126 +102,150 @@ function calc(s, options) {
         if (num === undefined) {
           throw new Error("Log function requires the num argument");
         }
+        if (num < 0) {
+          throw new Error("Log function requires the num argument to be greater than or equal to 0");
+        }
+        if (base <= 0) {
+          throw new Error("Log function requires the base argument to be greater than 0");
+        }
         //default base 10
         base = base || 10;
         return Math.log(num) / Math.log(base);
       },
       log2: function(num) {
         if (num === undefined) {
-          throw new Error("Log2 function requires at least one argument");
+          throw new Error("Log2 function requires the num argument");
+        }
+        if (num < 0) {
+          throw new Error("Log2 function requires the num argument to be greater than or equal to 0");
         }
         return Math.log2 ? Math.log2(num) : Math.log(num) / Math.LN2;
       },
       log10: function(num) {
         if (num === undefined) {
-          throw new Error("Log10 function requires at least one argument");
+          throw new Error("Log10 function requires the num argument");
+        }
+        if (num < 0) {
+          throw new Error("Log10 function requires the num argument to be greater than or equal to 0");
         }
         return Math.log10 ? Math.log10(num) : Math.log(num) / Math.LN10;
       },
       //trigonometric functions
       sin: function(num) {
         if (num === undefined) {
-          throw new Error("Sin function requires at least one argument");
+          throw new Error("Sin function requires the num argument");
         }
         return Math.sin(num);
       },
       sind: function(num) {
         if (num === undefined) {
-          throw new Error("Sind function requires at least one argument");
+          throw new Error("Sind function requires the num argument");
         }
         return Math.sin(num * Math.PI / 180);
       },
       asin: function(num) {
         if (num === undefined) {
-          throw new Error("Asin function requires at least one argument");
+          throw new Error("Asin function requires the num argument");
+        }
+        if (Math.abs(num) > 1) {
+          throw new Error("Asin function requires the num argument to be between -1 and 1 (inclusive)");
         }
         return Math.asin(num);
       },
       asind: function(num) {
         if (num === undefined) {
-          throw new Error("Sind function requires at least one argument");
+          throw new Error("Sind function requires the num argument");
+        }
+        if (Math.abs(num) > 1) {
+          throw new Error("Asind function requires the num argument to be between -1 and 1 (inclusive)");
         }
         return Math.asin(num) * 180 / Math.PI;
       },
       sinh: function(num) {
         if (num === undefined) {
-          throw new Error("Sinh function requires at least one argument");
+          throw new Error("Sinh function requires the num argument");
         }
         return Math.sinh ? Math.sinh(num) : (Math.exp(num) - Math.exp(-num)) / 2;
       },
       asinh: function(num) {
         if (num === undefined) {
-          throw new Error("Asinh function requires at least one argument");
+          throw new Error("Asinh function requires the num argument");
         }
         return Math.asinh ? Math.asinh(num) : (num === -Infinity ? num : Math.log(num + Math.sqrt(num * num + 1)));
       },
       cos: function(num) {
         if (num === undefined) {
-          throw new Error("Cos function requires at least one argument");
+          throw new Error("Cos function requires the num argument");
         }
         return Math.cos(num);
       },
       cosd: function(num) {
         if (num === undefined) {
-          throw new Error("Cosd function requires at least one argument");
+          throw new Error("Cosd function requires the num argument");
         }
         return Math.cos(num * Math.PI / 180);
       },
       acos: function(num) {
         if (num === undefined) {
-          throw new Error("Acos function requires at least one argument");
+          throw new Error("Acos function requires the num argument");
+        }
+        if (Math.abs(num) > 1) {
+          throw new Error("Acos function requires the num argument to be between -1 and 1 (inclusive)");
         }
         return Math.acos(num);
       },
       acosd: function(num) {
         if (num === undefined) {
-          throw new Error("Acosd function requires at least one argument");
+          throw new Error("Acosd function requires the num argument");
+        }
+        if (Math.abs(num) > 1) {
+          throw new Error("Acosd function requires the num argument to be between -1 and 1 (inclusive)");
         }
         return Math.acos(num) * 180 / Math.PI;
       },
       cosh: function(num) {
         if (num === undefined) {
-          throw new Error("Cosh function requires at least one argument");
+          throw new Error("Cosh function requires the num argument");
         }
         return Math.cosh ? Math.cosh(num) : (Math.exp(num) + Math.exp(-num)) / 2;
       },
       acosh: function(num) {
         if (num === undefined) {
-          throw new Error("Acosh function requires at least one argument");
+          throw new Error("Acosh function requires the num argument");
         }
         if (num < 1) {
-          throw new Error("Acosh function requires argument to be greater than or equal to one");
+          throw new Error("Acosh function requires the num argument to be greater than or equal to 1");
         }
         return Math.acosh ? Math.acosh(num) : Math.log(num + Math.sqrt(num * num - 1));;
       },
       tan: function(num) {
         if (num === undefined) {
-          throw new Error("Tan function requires at least one argument");
+          throw new Error("Tan function requires the num argument");
         }
         return Math.tan(num);
       },
       tand: function(num) {
         if (num === undefined) {
-          throw new Error("Tand function requires at least one argument");
+          throw new Error("Tand function requires the num argument");
         }
         return Math.tan(num * Math.PI / 180);
       },
       atan: function(num) {
         if (num === undefined) {
-          throw new Error("Atan function requires at least one argument");
+          throw new Error("Atan function requires the num argument");
         }
         return Math.atan(num);
       },
       atan2: function(num1, num2) {
         if (num1 === undefined) {
-          throw new Error("Atan2 function requires the first argument");
+          throw new Error("Atan2 function requires at least one argument");
         }
         num2 = num2 || 1;
         return Math.atan2(num1, num2);
       },
       atand: function(num) {
         if (num === undefined) {
-          throw new Error("Atand function requires at least one argument");
+          throw new Error("Atand function requires the num argument");
         }
         return Math.atan(num) * 180 / Math.PI;
       },
@@ -231,16 +258,16 @@ function calc(s, options) {
       },
       tanh: function(num) {
         if (num === undefined) {
-          throw new Error("Tanh function requires at least one argument");
+          throw new Error("Tanh function requires the num argument");
         }
         return Math.tanh ? Math.tanh(num) : (num === Infinity ? 1 : (num === -Infinity ? -1 : (Math.exp(num) - Math.exp(-num)) / (Math.exp(num) + Math.exp(-num))));
       },
       atanh: function(num) {
         if (num === undefined) {
-          throw new Error("Atanh function requires at least one argument");
+          throw new Error("Atanh function requires the num argument");
         }
         if (Math.abs(num) > 1) {
-          throw new Error("Atanh function requires argument to be greater than -1 and less than 1");
+          throw new Error("Atanh function requires argument to be between -1 and 1 (inclusive)");
         }
         return Math.atanh ? Math.atanh(num) : Math.log((1 + num) / (1 - num)) / 2;
       },
@@ -444,10 +471,14 @@ function calc(s, options) {
         args.push(calc(params.slice(commas[i] + 1, commas[i + 1]), options));
       }
     }
+    var res = functions[funcCall].apply(functions, args);
+    if (isNaN(res)) {
+      throw new Error("Error");
+    }
     if (s[0] !== "-") {
-      return functions[funcCall].apply(functions, args);
+      return res;
     } else {
-      return -functions[funcCall].apply(functions, args);
+      return -res;
     }
   }
   throw new Error("Error")
